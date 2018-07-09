@@ -2,6 +2,7 @@ html{
     background-color: #f3f3f3;
 }
 
+
 .form-basic{
     max-width: 640px;
     margin: 0 auto;
@@ -123,6 +124,12 @@ html{
     margin: 40px 183px 0;
 }
 
+.btn-approve{
+    margin: 0;
+    padding: 5px;
+    color: green;
+}
+
 /*	Making the form responsive. Remove this media query
     if you don't need the form to work on mobile devices. */
 
@@ -163,6 +170,8 @@ html{
 
     .form-basic button{
         margin: 0;
+        padding: 5px;
+        color: green;
     }
 
 }

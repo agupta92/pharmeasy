@@ -4,7 +4,7 @@ $(document).ready(function() {
     console.log('JQUERY FIRED');
 
     var table = $('#example').DataTable( {
-        ajax: "http://localhost/pharmeasy/apis/userRequests.php",
+        ajax: getRoot() + "/pharmeasy/apis/userRequests.php",
         "columnDefs": [ {
             "targets": -1,
             "data": null,
@@ -21,11 +21,11 @@ $(document).ready(function() {
             { data: "requestUpdatedDate" },
             { data: null, render: function(data,type,row){
                 //console.log(data);
-                if(data.userType == 'patient'){
-                    if(data.requestStatus === 'approved')
-                        return  '<button disabled>Click!</button>';
+                if((data.userType == 'patient') ){
+                    if((data.requestStatus === 'approved') || (data.requestStatus == 'NA'))
+                        return  'Approved!';
                     else {
-                        return  '<button>Click!</button>';
+                        return  '<button class="btn-approve">Approve</button>';
                     }
                 } else {
                     return 'NA';
@@ -40,7 +40,7 @@ $(document).ready(function() {
         var data = table.row( $(this).parents('tr') ).data();
         console.log(data);
         var requestId = data.requestId;
-        var jqxhr = $.get( "http://localhost/pharmeasy/apis/userRequestApproved.php?requestId=" + requestId, function(data) {
+        var jqxhr = $.get( getRoot() + "/pharmeasy/apis/userRequestApproved.php?requestId=" + requestId, function(data) {
             alert( "Success" );
             location.reload();
             console.log('Successs: ' + data );
@@ -59,7 +59,7 @@ $(document).ready(function() {
 
     $("#logout").click(function(){
         //alert('clicked!');
-        var jqxhr = $.get( "http://localhost/pharmeasy/apis/logout.php", function(data) {
+            var jqxhr = $.get( getRoot() + "/pharmeasy/apis/logout.php", function(data) {
             //alert( "Success" );
             window.location.replace('login.html');
             console.log('Successs: ' + data );
@@ -89,5 +89,10 @@ function ReadCookie(cookieName) {
     if (ind==-1 || cookieName=="") return "";
     var ind1=theCookie.indexOf(";",ind+1);
     if (ind1==-1) ind1=theCookie.length; 
-    return unescape(theCookie.substring(ind+cookieName.length+2,ind1));
+        return unescape(theCookie.substring(ind+cookieName.length+2,ind1));
+}
+
+function getRoot(){
+    var root = location.protocol + '//' + location.host;
+    return root;
 }

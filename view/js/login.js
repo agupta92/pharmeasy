@@ -1,12 +1,14 @@
 var editor; // use a global for the submit and return data rendering in the examples
  
 $(document).ready(function() {
+    var root = location.protocol + '//' + location.host;
+    //alert(root);
     console.log('Inside Login.js');
     $('#loginform').submit(function() {
 
         $.ajax({
             type: "GET",
-            url: 'http://localhost/pharmeasy/apis/login.php',
+            url: root + '/pharmeasy/apis/login.php',
             data: {
                 username: $("#username").val(),
                 password: $("#password").val()
