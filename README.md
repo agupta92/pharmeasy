@@ -4,7 +4,7 @@
 This is a basic application in which Users(Patient/Doctor/Pharmasist) can login and see medical records of a patient based on approval.
 
 ### URL
-```http://13.126.68.168/pharmeasy/```
+```<a href="http://13.126.68.168/pharmeasy/">Pharmeasy URL </a> ```
 
 ### Folder Structure
 
