@@ -6,7 +6,7 @@ error_reporting(E_ALL);
 
 include_once(__DIR__.'/../../config.php');
 include_once(__DIR__.'/../../helper/utils.php');
-require('User.php');
+include_once('User.php');
 
 class UserPatient extends User{
 
@@ -18,11 +18,11 @@ class UserPatient extends User{
 	public function getAllUserRequest(){
 		$user_id = $_SESSION['user_id'];
 
-		$sql_query = "select pur.user_record_id as recordId,urequest.request_id as requestId, pur.user_id as patientId, pur.record_type as recordType,
-						urequest.source_user as sourceUserId, udetails1.user_name as requestBy, udetails1.user_type requestedUserOccupation,
-						urequest.request_status as requestStatus, pur.file_name as RecordMessage, pur.created_at as DocCreatedDate
+		$sql_query = "select pur.user_record_id as recordId,urequest.request_id as requestId, pur.user_id as patientId, udetails.user_name as patientName,pur.record_type as recordType,
+						urequest.source_user as sourceUserId, CONCAT(udetails1.user_name, ' : ',udetails1.user_type) as requestedBy,
+						urequest.request_status as requestStatus, pur.file_name as filePath, pur.created_at as docCreatedDate,urequest.updated_at as requestUpdatedDate
 						from pe_user_records pur
-						left join pe_user_requests urequest ON urequest.for_user = pur.user_id 
+						left join pe_user_requests urequest ON urequest.record_id = pur.user_record_id 
 						left join pe_user_details udetails ON udetails.user_id = pur.user_id
 						left join pe_user_details udetails1 ON udetails1.user_id = urequest.source_user
 						where pur.user_id = '$user_id'

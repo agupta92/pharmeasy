@@ -5,14 +5,16 @@
 function returnSuccess($msg,$data = array()){
 	$successArray = array('m'=> $msg,
 							's'=> true,
-							'd'=> $data);
+							'data'=> $data);
+	header('Content-Type: application/json');
 	echo json_encode($successArray);
 }
 
 function returnFailure($msg,$data=array()){
 	$successArray = array('m'=> $msg,
 							's'=> false,
-							'd'=> $data);
+							'data'=> $data);
+	header('Content-Type: application/json');
 	echo json_encode($successArray);
 }
 

@@ -6,6 +6,9 @@ include_once(__DIR__.'/../config.php');
 include_once(__DIR__.'/../helper/utils.php');
 include_once(__DIR__.'/../classes/User/UserFactory.php');
 include_once(__DIR__.'/../classes/User/UserPatient.php');
+include_once(__DIR__.'/../classes/User/UserDoctor.php');
+//include_once(__DIR__.'/../classes/User/UserPharmacist.php');
+
 
 
 startSession();
