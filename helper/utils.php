@@ -31,5 +31,9 @@ function checkSession($user_id){
 	var_dump($_SESSION);
 }
 
+function destroySesssion(){
+	return session_destroy();
+}
+
 
 ?>

@@ -18,7 +18,7 @@ class UserDoctor extends User{
 	public function getAllUserRequest(){
 		$user_id = $_SESSION['user_id'];
 
-		$sql_query = "select pur.user_record_id as recordId,urequest.request_id as requestId, pur.user_id as patientId, 					udetails.user_name as patientName, pur.record_type as recordType, urequest.request_status as 						requestStatus,urequest.source_user, 'NA' as requestedBy,
+		$sql_query = "select pur.user_record_id as recordId,urequest.request_id as requestId, pur.user_id as patientId, 					udetails.user_name as patientName, pur.record_type as recordType, urequest.request_status as 						requestStatus,urequest.source_user, 'NA' as requestedBy,'doctor' as userType,
 						case WHEN urequest.request_status = 'pending' THEN 'NA'
 						WHEN urequest.request_status = 'approved' THEN pur.file_name 
 						END as filePath ,pur.created_at as docCreatedDate,urequest.updated_at as requestUpdatedDate

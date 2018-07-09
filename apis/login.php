@@ -5,7 +5,7 @@ include_once(__DIR__.'/../config.php');
 include_once(__DIR__.'/../helper/utils.php');
 
 
-$user_name = $_GET['userName'];
+$user_name = $_GET['username'];
 $user_password = $_GET['password'];
 
 $sql_query = "select user_id,user_type,user_email,user_name from pe_user_details where user_name = '$user_name' AND user_password = '$user_password'";
