@@ -28,3 +28,14 @@ This is a basic application in which Users(Patient/Doctor/Pharmasist) can login 
 ##### Pharmacist
   - UserName: pharmacist1, Password: pharmacist1
 - UserName: pharmacist2, Password: pharmacist2
+
+# Installation
+- ```$ git clone https://github.com/agupta92/pharmeasy.git```
+- ```$ commposer install ```
+- Import SampleSQL.sql file in mysql
+- Edit config.php in root folder providing mysql credentials.
+
+### Note
+- Do not rename directory after git clone
+- Provide proper mysql priviledges to the user
+
