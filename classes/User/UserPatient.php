@@ -15,6 +15,7 @@ class UserPatient extends User{
 		$this->userType = 'patient';
 	}
 
+	//It retirns all the pending request for the user.
 	public function getAllUserRequest(){
 		$user_id = $_SESSION['user_id'];
 
@@ -43,6 +44,28 @@ class UserPatient extends User{
 		}
 	}
 
+	//In case of Patient User, it shows all the records of that user.
+	public function getNonRequestedRecords(){
+		$user_id = $_SESSION['user_id'];
+
+		$sql_query = "select uRecords.user_record_id as recordId, uRecords.record_type as recordType,'patient' as userType,uRecords.created_at as createdAt, udetails.user_name as userName, udetails.user_email as userEmail, udetails.user_id as userId FROM `pe_user_records` as uRecords LEFT JOIN pe_user_details as udetails ON udetails.user_id = uRecords.user_id where  uRecords.user_id = '$user_id'";
+		global $db;
+		try{
+			$user_record_details = $db->rawQuery($sql_query);
+			//var_dump($user_record_details);exit;
+			if(isset($user_record_details[0])){
+				//checkSession(1);
+				returnSuccess('Records Found',$user_record_details);
+
+			} else {
+				returnSuccess('No Records Found');
+			}
+		} catch (Exception $e){
+			returnFailure('Some Error Occured: ' . $e->getMessage());
+		}
+	}
+
+	//Takes request ID as input and approve the request id.
 	public function approveRequest($requestId,$status = 'approved'){
 		global $db;
 		$data = array('request_status' => $status);

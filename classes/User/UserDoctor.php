@@ -46,7 +46,7 @@ class UserDoctor extends User{
 	public function getNonRequestedRecords(){
 		$user_id = $_SESSION['user_id'];
 
-		$sql_query = "select uRecords.user_record_id as recordId, uRecords.record_type as recordType,uRecords.created_at as createdAt, udetails.user_name as userName, udetails.user_email as userEmail, udetails.user_id as userId FROM `pe_user_records` as uRecords LEFT JOIN pe_user_details as udetails ON udetails.user_id = uRecords.user_id where uRecords.user_record_id NOT IN (select DISTINCT(record_id) from pe_user_requests where source_user = '$user_id')";
+		$sql_query = "select uRecords.user_record_id as recordId, uRecords.record_type as recordType,'doctor' as userType,uRecords.created_at as createdAt, udetails.user_name as userName, udetails.user_email as userEmail, udetails.user_id as userId FROM `pe_user_records` as uRecords LEFT JOIN pe_user_details as udetails ON udetails.user_id = uRecords.user_id where uRecords.user_record_id NOT IN (select DISTINCT(record_id) from pe_user_requests where source_user = '$user_id')";
 		global $db;
 		try{
 			$user_record_details = $db->rawQuery($sql_query);
