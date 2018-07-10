@@ -49,8 +49,12 @@ $(document).ready(function() {
             { data: "recordType" },
             { data: "createdAt" },
             { data: null, render: function(data,type,row){
-                console.log(data);
-                return  '<button class="btn-approve">Request</button>';
+                //console.log(data);
+                if((data.userType != 'patient') ){
+                    return  '<button class="btn-approve">Request</button>';
+                } else {
+                    return 'NA';
+                }
             }}
         ],
         select: true
