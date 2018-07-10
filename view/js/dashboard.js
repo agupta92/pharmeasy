@@ -35,6 +35,48 @@ $(document).ready(function() {
         select: true
     });
 
+    var table = $('#nonRequestedRecords').DataTable( {
+        ajax: getRoot() + "/pharmeasy/apis/getNonRequestedRecords.php",
+        "columnDefs": [ {
+            "targets": -1,
+            "data": null,
+            "defaultContent": "<button>Click!</button>"
+        } ],
+        columns: [
+            { data: "recordId" },
+            { data: "userName" },
+            { data: "userEmail" },
+            { data: "recordType" },
+            { data: "createdAt" },
+            { data: null, render: function(data,type,row){
+                console.log(data);
+                return  '<button class="btn-approve">Request</button>';
+            }}
+        ],
+        select: true
+    });
+
+    $('#nonRequestedRecords tbody').on( 'click', 'button', function () {
+        var data = table.row( $(this).parents('tr') ).data();
+        console.log(data);
+        var recordId = data.recordId;
+        var user_id = data.userId;
+        var jqxhr = $.get( getRoot() + "/pharmeasy/apis/createNewRequest.php?recordId=" + recordId + "&userId=" + user_id, function(data) {
+            console.log('Successs: ' + data );
+            alert( "Success" );
+            location.reload();           
+        })
+          .done(function() {
+            //alert( "second success" );
+          })
+          .fail(function() {
+            alert( "error" );
+          })
+          .always(function() {
+            //alert( "finished" );
+          });
+        //alert( data[0] +"'s salary is: "+ data[ 5 ] );
+    } );
 
     $('#example tbody').on( 'click', 'button', function () {
         var data = table.row( $(this).parents('tr') ).data();

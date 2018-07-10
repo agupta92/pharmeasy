@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 09, 2018 at 05:02 PM
+-- Generation Time: Jul 09, 2018 at 09:17 PM
 -- Server version: 5.6.26
 -- PHP Version: 5.5.28
 
@@ -105,7 +105,7 @@ CREATE TABLE IF NOT EXISTS `pe_user_requests` (
 --
 
 INSERT INTO `pe_user_requests` (`request_id`, `source_user`, `for_user`, `record_id`, `request_status`, `created_by`, `created_at`, `updated_by`, `updated_at`) VALUES
-(1, 3, 1, 3, 'pending', 1, '2018-07-09 20:04:34', 1, '2018-07-09 20:04:34'),
+(1, 3, 1, 3, 'approved', 1, '2018-07-09 20:04:34', 1, '2018-07-09 20:04:34'),
 (2, 4, 1, 3, 'pending', 1, '2018-07-09 20:04:34', 1, '2018-07-09 20:04:34'),
 (3, 4, 2, 5, 'pending', 1, '2018-07-09 20:04:34', 1, '2018-07-09 20:04:34'),
 (4, 6, 2, 8, 'pending', 1, '2018-07-09 20:04:34', 1, '2018-07-09 20:04:34'),
@@ -133,13 +133,15 @@ ALTER TABLE `pe_user_details`
 -- Indexes for table `pe_user_records`
 --
 ALTER TABLE `pe_user_records`
-  ADD PRIMARY KEY (`user_record_id`);
+  ADD PRIMARY KEY (`user_record_id`),
+  ADD KEY `user_id` (`user_id`);
 
 --
 -- Indexes for table `pe_user_requests`
 --
 ALTER TABLE `pe_user_requests`
-  ADD PRIMARY KEY (`request_id`);
+  ADD PRIMARY KEY (`request_id`),
+  ADD KEY `record_id` (`record_id`);
 
 --
 -- AUTO_INCREMENT for dumped tables

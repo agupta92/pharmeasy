@@ -130,6 +130,11 @@ html{
     color: green;
 }
 
+.class-logout{
+    margin: 0;
+    padding: 5px;
+}
+
 /*	Making the form responsive. Remove this media query
     if you don't need the form to work on mobile devices. */
 

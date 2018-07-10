@@ -32,6 +32,12 @@ header h1{
 	color: #fff;
 }
 
+header h2{
+    float: center;
+    font: normal 18px/1.5 'Open Sans', sans-serif;
+    color: #fff;
+}
+
 header a{
     color:#fff;
     float: right;
