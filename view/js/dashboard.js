@@ -20,7 +20,7 @@ $(document).ready(function() {
             { data: "docCreatedDate" },
             { data: "requestUpdatedDate" },
             { data: null, render: function(data,type,row){
-                //console.log(data);
+                console.log(data);
                 if((data.userType == 'patient') ){
                     if((data.requestStatus === 'approved') || (data.requestStatus == 'NA'))
                         return  'Approved!';
@@ -35,7 +35,7 @@ $(document).ready(function() {
         select: true
     });
 
-    var table = $('#nonRequestedRecords').DataTable( {
+    var table1 = $('#nonRequestedRecords').DataTable( {
         ajax: getRoot() + "/pharmeasy/apis/getNonRequestedRecords.php",
         "columnDefs": [ {
             "targets": -1,
@@ -61,7 +61,7 @@ $(document).ready(function() {
     });
 
     $('#nonRequestedRecords tbody').on( 'click', 'button', function () {
-        var data = table.row( $(this).parents('tr') ).data();
+        var data = table1.row( $(this).parents('tr') ).data();
         console.log(data);
         var recordId = data.recordId;
         var user_id = data.userId;
