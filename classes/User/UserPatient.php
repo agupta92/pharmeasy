@@ -15,7 +15,7 @@ class UserPatient extends User{
 		$this->userType = 'patient';
 	}
 
-	//It retirns all the pending request for the user.
+	//It returns all the pending request for the user.
 	public function getAllUserRequest(){
 		$user_id = $_SESSION['user_id'];
 
@@ -31,9 +31,7 @@ class UserPatient extends User{
 		global $db;
 		try{
 			$user_record_details = $db->rawQuery($sql_query);
-			//var_dump($user_record_details);exit;
 			if(isset($user_record_details[0])){
-				//checkSession(1);
 				returnSuccess('Records Found',$user_record_details);
 
 			} else {
@@ -52,9 +50,7 @@ class UserPatient extends User{
 		global $db;
 		try{
 			$user_record_details = $db->rawQuery($sql_query);
-			//var_dump($user_record_details);exit;
 			if(isset($user_record_details[0])){
-				//checkSession(1);
 				returnSuccess('Records Found',$user_record_details);
 
 			} else {

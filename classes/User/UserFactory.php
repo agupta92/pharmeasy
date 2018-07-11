@@ -1,8 +1,6 @@
 <?php
 namespace pharmeasy\classes\User;
-// include_once('UserPatient.php');
-// include_once('UserDoctor.php');
-// include_once('UserPharmacist.php');
+
 error_reporting(E_ALL);
 
 

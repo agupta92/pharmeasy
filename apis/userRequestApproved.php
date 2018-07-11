@@ -1,7 +1,13 @@
 <?php
 namespace pharmeasy\classes\User;
 error_reporting(E_ALL);
-
+/**
+ * User Request Approve API
+ *
+ * @category  User
+ * @author    Ankit Gupta <agupta_92@yahoo.co.in>
+ * @param Request ID
+ */
 include_once(__DIR__.'/../config.php');
 include_once(__DIR__.'/../helper/utils.php');
 include_once(__DIR__.'/../classes/User/UserFactory.php');

@@ -1,5 +1,11 @@
 <?php
-
+/**
+ * Helper Functions
+ *
+ * @category  Helper
+ * @package   Not Defined
+ * @author    Ankit Gupta <agupta_92@yahoo.co.in>
+ */
 
 
 function returnSuccess($msg,$data = array()){
